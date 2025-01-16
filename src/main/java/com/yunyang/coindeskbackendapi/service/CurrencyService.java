@@ -5,13 +5,10 @@ import com.yunyang.coindeskbackendapi.entity.param.CreateCurrencyMappingParam;
 import com.yunyang.coindeskbackendapi.entity.param.UpdateCurrencyMappingParam;
 import com.yunyang.coindeskbackendapi.entity.vo.CurrencyMappingVO;
 import com.yunyang.coindeskbackendapi.repository.CurrencyMappingRepository;
-import com.yunyang.coindeskbackendapi.restClient.CoindeskApiClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -21,7 +18,7 @@ public class CurrencyService {
     private CurrencyMappingRepository currencyMappingRepository;
 
     @Autowired
-    private CoindeskApiClient coindeskApiClient;
+    private CoindeskService coindeskService;
 
     public List<CurrencyMappingVO> getCurrencyList() {
         // find all from db
@@ -55,20 +52,5 @@ public class CurrencyService {
 
     public void deleteCurrency(int id) {
         currencyMappingRepository.deleteById(id);
-    }
-
-    public Map<String, Object> getTransformedCoindeskData() {
-        Map<String, Object> coindeskDataMap = coindeskApiClient.getCoindeskData();
-        Map<String, Object> transformedData = new HashMap<>();
-
-        for (String key : coindeskDataMap.keySet()) {
-            CurrencyMappingEntity mapping = currencyMappingRepository.findByCurrencyCode(key);
-            if (mapping != null) {
-                Map<String, Object> currencyData = (Map<String, Object>) coindeskDataMap.get(key);
-                transformedData.put(mapping.getCurrencyCName(), currencyData);
-            }
-        }
-
-        return transformedData;
     }
 }

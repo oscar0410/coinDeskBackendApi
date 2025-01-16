@@ -2,7 +2,10 @@ package com.yunyang.coindeskbackendapi.controller;
 
 import com.yunyang.coindeskbackendapi.entity.param.CreateCurrencyMappingParam;
 import com.yunyang.coindeskbackendapi.entity.param.UpdateCurrencyMappingParam;
+import com.yunyang.coindeskbackendapi.entity.vo.CoindeskApiResponseVO;
+import com.yunyang.coindeskbackendapi.entity.vo.CoindeskTransformedVO;
 import com.yunyang.coindeskbackendapi.entity.vo.CurrencyMappingVO;
+import com.yunyang.coindeskbackendapi.service.CoindeskService;
 import com.yunyang.coindeskbackendapi.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,8 @@ public class CurrencyController {
     @Autowired
     private CurrencyService currencyService;
 
+    @Autowired
+    private CoindeskService coindeskService;
     /**
      * 取得 CurrencyMapping 清單
      *
@@ -81,8 +86,14 @@ public class CurrencyController {
 
     // Coindesk API Integration
     @GetMapping("/coindesk")
-    public ResponseEntity<Map<String, Object>> getTransformedData() {
-        return ResponseEntity.ok(currencyService.getTransformedCoindeskData());
+    public ResponseEntity<CoindeskApiResponseVO> getTransformedData() {
+        return ResponseEntity.ok(coindeskService.getCoindeskData());
     }
+
+    @GetMapping("/coindesk/transform")
+    public ResponseEntity<CoindeskTransformedVO> getCoindeskData() {
+        return ResponseEntity.ok(coindeskService.getTransformedCoindeskData());
+    }
+
 
 }
