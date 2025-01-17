@@ -1,19 +1,24 @@
 package com.yunyang.coindeskbackendapi.entity.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 public class CoindeskTransformedVO {
 
-    private String updatedTime;
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "UTC")
+    private Date updatedTime;
 
     private List<CoindeskTransformedCurrencyVO> currencies;
 
-    public String getUpdatedTime() {
+    public Date getUpdatedTime() {
         return updatedTime;
     }
 
-    public void setUpdatedTime(String updatedTime) {
+    public void setUpdatedTime(Date updatedTime) {
         this.updatedTime = updatedTime;
     }
 

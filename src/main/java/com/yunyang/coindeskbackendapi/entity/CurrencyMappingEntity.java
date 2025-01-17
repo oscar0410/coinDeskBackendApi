@@ -10,9 +10,9 @@ public class CurrencyMappingEntity  {
     private int id;
 
     @Column(name = "currency_code")
-    private String currencyCode;
+    private String code;
     @Column(name = "chinese_name")
-    private String currencyCName;
+    private String chineseName;
 
     public int getId() {
         return id;
@@ -22,19 +22,19 @@ public class CurrencyMappingEntity  {
         this.id = id;
     }
 
-    public String getCurrencyCode() {
-        return currencyCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setCurrencyCode(String currencyCode) {
-        this.currencyCode = currencyCode;
+    public void setCode(String currencyCode) {
+        this.code = currencyCode;
     }
 
-    public String getCurrencyCName() {
-        return currencyCName;
+    public String getChineseName() {
+        return chineseName;
     }
 
-    public void setCurrencyCName(String currencyCName) {
-        this.currencyCName = currencyCName;
+    public void setChineseName(String currencyCName) {
+        this.chineseName = currencyCName;
     }
 }

@@ -4,27 +4,40 @@ import com.yunyang.coindeskbackendapi.entity.CurrencyMappingEntity;
 
 public class CurrencyMappingVO {
 
-    private String code;
-    private String name;
+    private int currencyId;
+    private String currencyCode;
+    private String currencyCName;
 
     public CurrencyMappingVO() {
     }
 
-    public CurrencyMappingVO(CurrencyMappingEntity entity){
-        this.code = entity.getCurrencyCode();
-        this.name = entity.getCurrencyCName();
+    public CurrencyMappingVO(CurrencyMappingEntity entity) {
+        this.currencyId = entity.getId();
+        this.currencyCode = entity.getCode();
+        this.currencyCName = entity.getChineseName();
     }
 
-    public String getCode() {
-        return code;
+    public int getCurrencyId() {
+        return currencyId;
     }
-    public void setCode(String code) {
-        this.code = code;
+
+    public void setCurrencyId(int currencyId) {
+        this.currencyId = currencyId;
     }
-    public String getName() {
-        return name;
+
+    public String getCurrencyCode() {
+        return currencyCode;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
+
+    public String getCurrencyCName() {
+        return currencyCName;
+    }
+
+    public void setCurrencyCName(String currencyCName) {
+        this.currencyCName = currencyCName;
     }
 }

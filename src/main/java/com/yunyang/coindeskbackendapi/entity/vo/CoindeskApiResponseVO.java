@@ -3,6 +3,7 @@ package com.yunyang.coindeskbackendapi.entity.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Map;
 
 public class CoindeskApiResponseVO {
@@ -46,7 +47,7 @@ public class CoindeskApiResponseVO {
 
     public static class CoindeskTime {
         private String updated;
-        private String updatedISO;
+        private Timestamp updatedISO;
         private String updateduk;
 
         public String getUpdated() {
@@ -57,11 +58,11 @@ public class CoindeskApiResponseVO {
             this.updated = updated;
         }
 
-        public String getUpdatedISO() {
+        public Timestamp getUpdatedISO() {
             return updatedISO;
         }
 
-        public void setUpdatedISO(String updatedISO) {
+        public void setUpdatedISO(Timestamp updatedISO) {
             this.updatedISO = updatedISO;
         }
 

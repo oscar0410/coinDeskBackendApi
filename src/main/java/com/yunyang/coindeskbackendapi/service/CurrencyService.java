@@ -35,8 +35,8 @@ public class CurrencyService {
 
     public CurrencyMappingVO addCurrency(CreateCurrencyMappingParam param) {
         CurrencyMappingEntity currencyMappingEntity = new CurrencyMappingEntity();
-        currencyMappingEntity.setCurrencyCode(param.getCode());
-        currencyMappingEntity.setCurrencyCName(param.getName());
+        currencyMappingEntity.setCode(param.getCode());
+        currencyMappingEntity.setChineseName(param.getName());
         currencyMappingEntity = currencyMappingRepository.save(currencyMappingEntity);
         return new CurrencyMappingVO(currencyMappingEntity);
     }
@@ -44,8 +44,8 @@ public class CurrencyService {
     public CurrencyMappingVO updateCurrency(int id, UpdateCurrencyMappingParam param) {
         CurrencyMappingEntity currencyMappingEntity = currencyMappingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Currency not found"));
-        currencyMappingEntity.setCurrencyCode(param.getCode());
-        currencyMappingEntity.setCurrencyCName(param.getName());
+        currencyMappingEntity.setCode(param.getCode());
+        currencyMappingEntity.setChineseName(param.getName());
         currencyMappingEntity = currencyMappingRepository.save(currencyMappingEntity);
         return new CurrencyMappingVO(currencyMappingEntity);
     }
