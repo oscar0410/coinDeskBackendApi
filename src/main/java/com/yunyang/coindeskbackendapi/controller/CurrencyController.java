@@ -79,9 +79,10 @@ public class CurrencyController {
      * @return
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCurrency(@PathVariable("id") int id) {
+    public ResponseEntity<Map<String, Object>> deleteCurrency(@PathVariable("id") int id) {
         currencyService.deleteCurrency(id);
-        return ResponseEntity.ok().build();
+        Map<String, Object> map = Map.of("isSuccess", true, "message", "delete success");
+        return ResponseEntity.ok(map);
     }
 
     // Coindesk API Integration
